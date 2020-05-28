@@ -29,3 +29,4 @@ Once completed, visiting the link in your browser should create an output to be 
 
 For specific usage, please see the Oreo documentation linked above. This allows standard EUD memory controls and some extra premade bonuses like keypress detection, and chatbox detection. More could likely be added in the future for ease of use (perhaps more CUnit-related stuff, or CText?)
 
+I imagine this would allow for designing modular projects that can be reused later - this should be especially useful when creating EUD scripts for niche purposes. 
