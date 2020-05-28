@@ -1,4 +1,4 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/oreo/oreo-php/initialize.php");
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/oreo/oreo-test/oreo-php/initialize.php");
 // https://stackoverflow.com/questions/39302659/going-one-level-up-using-in-php-not-working
 $P1 = new Player("Player 1");
 	$spawntimer = new Deathcounter();
@@ -15,7 +15,7 @@ $P1 = new Player("Player 1");
 
 // Every oreo trigger begins with a player object which must be defined before the trigger. Player objects can hold any number of players.
 //Example of creating new Player object (we're naming ours $Players):
-$Players = new Player("Player 1", "Player 2", "Player 3");
+$Players = new Player("Player 1");
 
 		// So an interesting thing in Oreo is that it appears IndexedUnits are made and ABLE to store an index,
 		// however, they do not appear to have any way tom GET the index. I should write a function for acquiring unit index given a location/unit combination - 
@@ -29,8 +29,9 @@ $Players = new Player("Player 1", "Player 2", "Player 3");
 		$otherUnits = new UnitGroup("Zerg Hydralisk", P2, $spawnArea2); // We'll create other units to test out the unit ID process.
 
 		// Let's try to get a unit ID, and see if we can generalize it enough to incorporate into Oreo for later.
-		$Players->always( 
-			$unit->create(1)
-			
+		$Players->justonce( 
+			$unit->create(1),
+			Comment("Test"), // This will still generate an empty comment after (not sure if that's too great), but this will just take priority. Might fix that later.
+			''
 		)
 ?>
