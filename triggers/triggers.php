@@ -31,7 +31,17 @@ $Players = new Player("Player 1");
 		// Let's try to get a unit ID, and see if we can generalize it enough to incorporate into Oreo for later.
 		$Players->justonce( 
 			$unit->create(1),
-			Comment("Test"), // This will still generate an empty comment after (not sure if that's too great), but this will just take priority. Might fix that later.
+			Comment("Test"), // This will still generate an empty comment after (not sure if that's too great), but this will just take priority. Might fix that later - extremely minor optimization.
 			''
-		)
+		);
+
+// We will be utilizing this method by Azrael: http://www.staredit.net/topic/14230/#12
+// in order to find the unit ID of any arbitrary unit.
+// Outlined are 3 methods. We will be utilizing method A.
+
+// THE PLAN: We will be using a physical location on the map, and check all unit ID's 0-1699 to see if they are at that location.
+// The result will be the correct unit ID.
+
+$Players = new Player("Player 1");
+
 ?>

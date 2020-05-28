@@ -57,7 +57,17 @@ class IndexedUnit extends UnitGroup{
         $this->F4 = clone $clone;
         $this->F4->Player = F4;
 	}
-	
+    
+    /////
+    //GET-SET
+    // 
+    // This function is here so we don't have to create 1700 IndexedUnits just to find an arbitrary unitID.
+    public function setIndex($index){
+        $this->Index = $index;
+        return $index;
+    }
+
+    
     /////
     //CONVERSION FUNCTIONS
     //
