@@ -10,7 +10,7 @@ $P2 = new Player("Player 2");
 	'');
 
 	$P1->always(
-		DisplayText("Timer: $spawntimer"),
+		//DisplayText("Timer: $spawntimer"),
 		$spawntimer->subtract(1),
 	'');
 
@@ -26,7 +26,6 @@ $Players = new Player("Player 1");
 		$spawnArea = new Location("main"); // I'm assuming we have to create these in SCMDraft first, and this "links" them. Will test.
 		$spawnArea2 = new Location("other");
 
-		$indexedunit = new IndexedUnit(0); // This really is just storing the ID, and allowing manipulations to that ID. It doesn't retrieve it.
 		$unit = new UnitGroup("Terran Marine", P1, $spawnArea); // create a unit at SpawnArea and we'll see if we can get its ID.
 		$otherUnits = new UnitGroup("Zerg Hydralisk", P2, $spawnArea2); // We'll create other units to test out the unit ID process.
 
@@ -62,14 +61,24 @@ $P2 = new Player("Player 2");
 		$x = new Deathcounter($P2, 500);
 		$y = new Deathcounter($P2, 500);
 		$indexedUnit = new IndexedUnit(0);
-
 		$searchLocation = new Location("main"); // this is the location we will be scanning for our unit ID in.
 
 		$Players->always(
-			$indexedUnit->getcurrentXCoordinate($x,1),
-			$indexedUnit->getcurrentYCoordinate($y,1),
-			DisplayText("X: $x"),
-			DisplayText("Y: $y"),
+			// THIS TOOK WAY TOO LONG TO FIGURE OUT.
+			// getcurrentXCoordinate takes 2 args, a DC to write to, and a "maxtile"
+			// maxtile is pretty much how many tiles, from the origin, that the function will function in.
+			// Setting this to 256x256 just caused this entire trigger to not work
+			// Setting it too small didn't seem to work at first until i realized that every tile consists of 32x32 of these units
+			// -- a small area!
+			// While moving a unit within the X range, and within the Y range, we will get new changes to the value. Otherwise it will remain capped.
+			// Go ahead and give the attached demo map a shot.
+			$indexedUnit->getcurrentXCoordinate($x,15),
+			$indexedUnit->getcurrentYCoordinate($y,15),
+			//$x->setTo(intval($x/256)),
+			//$y->setTo(intval($y/256)),
+			Display("X: $x"),
+			Display("Y: $y"),
 			''
 		);
+
 ?>
