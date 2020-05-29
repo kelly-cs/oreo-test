@@ -84,7 +84,7 @@ class IndexedUnit extends UnitGroup{
     }
 	
     //Function to output EPD address given the EPD function offset
-    //for EPD function offset, see: 
+    //for EPD function offset, see: http://www.staredit.net/topic/10471/
     public function convertToEPD($firstunitEPDindex){
         if($this->Index == 0){
             return $firstunitEPDindex;
